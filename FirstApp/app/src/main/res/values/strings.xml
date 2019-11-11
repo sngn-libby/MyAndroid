@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">FirstApp</string>
+    <string name="a1CallBtn">A1Call</string>
+    <string name="a2CallBtn">A2Call</string>
+    <string name="a3CallBtn">A3Call</string>
+    <string name="mainCall">MainCall</string>
+    <string name="infoTv">InfoTv</string>
+    <string name="TextView">TextView</string>
+</resources>
