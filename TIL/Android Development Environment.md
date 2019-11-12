@@ -32,12 +32,16 @@
   setContentView(b);
   ```
 
-- activity_main.xml 에 등록되는 버튼, 이미지뷰 등의 id는 R.java에 맵형태로 저장된다.
+- activity_main.xml 에 등록되는 버튼, 이미지뷰 등의 id는 **R.java**에 맵형태로 저장된다.
+
+- res 폴더에 들어있는 모든 리소스는 **R.java**에 자동으로 등록된다.
 
 - `onCreate()` 에서 작성하는 코드 (53p)
 
   - 화면 초기화
   - callBack
+  
+  
 
 
 

@@ -12,6 +12,7 @@ public class A1_Activity extends AppCompatActivity {
 
     TextView infoTv;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +24,13 @@ public class A1_Activity extends AppCompatActivity {
         infoTv.setText("Recieved Data : " + path);
     }
 
+
+
     public void mainCall(View view) {
         Toast.makeText(this, "Main Call", Toast.LENGTH_SHORT).show();
 //        Intent i = new Intent(this, MainActivity.class);
 //        startActivity(i);
 
-        finish(); // back 키와 같은 효과
+//        finish(); // back 키와 같은 효과
     }
 }

@@ -1,12 +1,13 @@
 package com.sm.firstapp;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,6 +16,48 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toast.makeText(this,"Main onCreate", Toast.LENGTH_SHORT).show();
+        Log.i("INFO", "Main OnCreate");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Toast.makeText(this,"Main onRestart", Toast.LENGTH_SHORT).show();
+        Log.i("INFO", "Main onRestart");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Toast.makeText(this,"Main onStart", Toast.LENGTH_SHORT).show();
+        Log.i("INFO", "Main onStart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(this,"Main onResume", Toast.LENGTH_SHORT).show();
+        Log.i("INFO", "Main onResume");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Toast.makeText(this,"Main onPause", Toast.LENGTH_SHORT).show();
+        Log.i("INFO", "Main onPause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Toast.makeText(this,"Main onStop", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Toast.makeText(this,"Main onDestroy", Toast.LENGTH_SHORT).show();
     }
 
     public void a1Call(View view) {
@@ -28,10 +71,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void a2Call(View view) {
-        Toast.makeText(this, "Call Other Process(App)", Toast.LENGTH_SHORT).show();
         // 다른 앱(프로세스)에서 컴포넌트 사용자 정의 방법으로 **묵시적**으로 호출하기 (SecondApp 호출)
-        Intent i2 = new Intent("com.sm.action.EDIT"); // 사용자정의 action (여기서는 수정작업을 하는 Activity호출하기)
-
+        //Intent i2 = new Intent("com.sm.action.EDIT"); // 사용자정의 action (여기서는 수정작업을 하는 Activity호출하기)
+        // 위를 **명시적**으로 호출하기
+        ComponentName cpName = new ComponentName("com.sm.secondapp", "com.sm.secondapp.TestActivity");
+        Intent i2 = new Intent();
+        i2.setComponent(cpName);
         startActivity(i2);
     }
 

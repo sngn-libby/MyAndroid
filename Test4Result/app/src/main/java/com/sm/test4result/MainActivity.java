@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(i, EDIT_MODE);
     }
 
-    @Override
+    @Override // callback 함수 : framework가 자동으로 호출한다. (여러 프로세스로부터 결과를 받을 수 있다)
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
