@@ -49,7 +49,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void showAllMemo() {
         if(memos.size()==0) return;
-        tv1.setText(memos.get(0).title);
-        if(memos.size()>1) tv2.setText(memos.get(1).title);
+        tv1.setText(getMemo(memos.size()).getTitle());
+        if(memos.size()>1) tv2.setText(getMemo(memos.size()-1).getTitle());
+    }
+
+    public Memo getMemo(int id) {
+        for(int i=0; i<memos.size(); i++) {
+            if(memos.get(i).getId()==id) return memos.get(i);
+        }
+
+        return null;
     }
 }
