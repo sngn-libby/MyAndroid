@@ -1,0 +1,1 @@
+[Android Studio Heap upsizing](https://thdev.tech/devtools/2016/08/19/AndroidStudio-heap-Memory-Upgrade/)

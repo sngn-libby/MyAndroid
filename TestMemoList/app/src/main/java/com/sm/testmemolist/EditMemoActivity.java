@@ -8,7 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -33,7 +36,7 @@ public class EditMemoActivity extends AppCompatActivity {
 
         Intent i = getIntent();
 
-        cal = new GregorianCalendar();
+        cal = Calendar.getInstance();
         titleTx = findViewById(R.id.titleTx);
         contentsTx = findViewById(R.id.contentsTx);
         dateTx = findViewById(R.id.dateTx);
@@ -42,18 +45,18 @@ public class EditMemoActivity extends AppCompatActivity {
         statusTv = findViewById(R.id.statusTv);
         manager = MemoManager.getInstance();
 
-        title = titleTx.getText().toString();
 
-        date = cal.YEAR + "-" + cal.WEEK_OF_MONTH + "-" + cal.DAY_OF_WEEK_IN_MONTH;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        date = dateFormat.format(cal.getTime());
 
         flag = i.getIntExtra("status", 0);
         if(flag == 3) {
 
             statusTv.setText("View");
             editBtn.setText(EDIT_MODE);
-            titleTx.setText(title);
-            contentsTx.setText(manager.getMemo(title).getContent());
-            dateTx.setText(manager.getMemo(title).getDate());
+            titleTx.setText(i.getStringExtra("title"));
+            contentsTx.setText(i.getStringExtra("contents"));
+            dateTx.setText(i.getStringExtra("date"));
             titleTx.setFocusable(false);
             contentsTx.setFocusable(false);
             dateTx.setFocusable(false);
@@ -75,13 +78,11 @@ public class EditMemoActivity extends AppCompatActivity {
                 else if(editBtn.getText() == SAVE_MODE) {
                     Intent i = new Intent(EditMemoActivity.this, EditMemoActivity.class);
                     i.putExtra("status", "Edit");
+                    i.putExtra("title", titleTx.getText().toString());
+                    i.putExtra("contents", contentsTx.getText().toString());
+                    i.putExtra("date", date);
 
-                    if(flag == 3)
-                        manager.editMemo(title, contentsTx.getText().toString(), date);
-                    else
-                        manager.addMemo(titleTx.getText().toString(), contentsTx.getText().toString(), date);
-
-                    setResult(RESULT_OK);
+                    setResult(RESULT_OK, i);
                     finish();
                 }
             }

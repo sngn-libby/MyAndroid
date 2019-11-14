@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     ListView memoListView;
     Button addBtn, deleteBtn;
     MemoManager manager;
+    ArrayList<Memo> memoArr;
+    String sel;
     MemoAdapter<Memo> memoAdapter;
 
     @Override
@@ -36,15 +39,27 @@ public class MainActivity extends AppCompatActivity {
         memoListView = findViewById(R.id.memoListView);
         addBtn = findViewById(R.id.addBtn);
         deleteBtn = findViewById(R.id.deleteBtn);
+        memoArr = manager.getAllMemo();
 
-        memoAdapter = new MemoAdapter<>(R.layout.row_layout, manager.getAllMemo());
-        memoListView.setAdapter(memoAdapter);
+        memoAdapter = new MemoAdapter<>(R.layout.row_layout,  memoArr);
+
+        memoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Memo m = manager.getAllMemo().get(position);
+                sel = m.getTitle();
+            }
+        });
 
         memoListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(MainActivity.this, EditMemoActivity.class);
+                Memo m = manager.getAllMemo().get(position);
                 i.putExtra("status", VIEW_MODE);
+                i.putExtra("title", m.getTitle());
+                i.putExtra("contents", m.getContent());
+                i.putExtra("date", m.getDate());
                 startActivityForResult(i, VIEW_MODE);
                 return false;
             }
@@ -62,11 +77,17 @@ public class MainActivity extends AppCompatActivity {
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Memo m = (Memo) memoListView.getSelectedItem(); // check
-                if(manager.deleteMemo(m.getTitle()))
+                if(manager.deleteMemo(sel))
+                    memoListView.setAdapter(memoAdapter);
                     Toast.makeText(MainActivity.this, "memo deleted", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        memoListView.setAdapter(memoAdapter);
     }
 
     class MemoAdapter<M> extends BaseAdapter {
@@ -98,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
         public View getView(int position, View convertView, ViewGroup parent) {
 
             Memo selMemo = memoList.get(position);
-            Toast.makeText(MainActivity.this, selMemo.toString(), Toast.LENGTH_SHORT).show();
             final ViewHolder viewHolder;
 
             if(convertView == null) {
@@ -112,7 +132,6 @@ public class MainActivity extends AppCompatActivity {
             else {
                 viewHolder = (ViewHolder) convertView.getTag();
             }
-            Toast.makeText(MainActivity.this, selMemo.getTitle(), Toast.LENGTH_SHORT).show();
             viewHolder.title.setText(selMemo.getTitle());
             viewHolder.date.setText(selMemo.getDate());
 
@@ -129,12 +148,17 @@ public class MainActivity extends AppCompatActivity {
 
         if(requestCode == ADD_MODE) {
             Toast.makeText(this, "memo added", Toast.LENGTH_SHORT).show();
+            manager.addMemo(data.getStringExtra("title"),
+                    data.getStringExtra("contents"),
+                    data.getStringExtra("date"));
+
 
         } else if(requestCode == VIEW_MODE) {
             Toast.makeText(this, "memo edited", Toast.LENGTH_SHORT).show();
+            manager.editMemo(data.getStringExtra("title"),
+                    data.getStringExtra("contents"),
+                    data.getStringExtra("date"));
         }
-
-        memoListView.setAdapter(memoAdapter);
     }
 
     class ViewHolder {

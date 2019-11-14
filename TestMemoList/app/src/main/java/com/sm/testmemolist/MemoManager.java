@@ -15,17 +15,14 @@ public class MemoManager {
         return instance;
     }
 
-    public void addMemo(String title, String content, String date) {
-        manager.add(new Memo(title, content, date));
-    }
-
-    public int cntMemo() {
-        return manager.size();
+    public void addMemo(String title, String contents, String date) {
+        if(getMemo(title) == null)
+            manager.add(new Memo(title, contents, date));
     }
 
     public boolean deleteMemo(String title) {
         for(int i=0; i<manager.size(); i++) {
-            if(manager.get(i).getTitle() == title) {
+            if(manager.get(i).getTitle().equals(title)) {
                 manager.remove(i);
                 return true;
             }
@@ -35,22 +32,17 @@ public class MemoManager {
     }
 
     public boolean editMemo(String title, String content, String date) {
-        for(int i=0; i<manager.size(); i++) {
-            if(manager.get(i).getTitle() == title) {
+        Memo m = getMemo(title);
+        if(m == null) return false;
+        m.setContent(content);
+        m.setDate(date);
 
-                manager.get(i).setContent(content);
-                manager.get(i).setDate(date);
-
-                return true;
-            }
-        }
-
-        return false;
+        return true;
     }
 
     public Memo getMemo(String title) {
         for(int i=0; i<manager.size(); i++) {
-            if(manager.get(i).getTitle() == title) return manager.get(i);
+            if(manager.get(i).getTitle().equals(title)) return manager.get(i);
         }
 
         return null;
