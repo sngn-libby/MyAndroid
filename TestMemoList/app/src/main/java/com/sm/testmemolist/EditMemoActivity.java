@@ -15,6 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
+import static com.sm.testmemolist.MainActivity.VIEW_MODE;
+
 public class EditMemoActivity extends AppCompatActivity {
 
     TextView statusTv;
@@ -50,7 +52,7 @@ public class EditMemoActivity extends AppCompatActivity {
         date = dateFormat.format(cal.getTime());
 
         flag = i.getIntExtra("status", 0);
-        if(flag == 3) {
+        if(flag == VIEW_MODE) {
 
             statusTv.setText("View");
             editBtn.setText(EDIT_MODE);

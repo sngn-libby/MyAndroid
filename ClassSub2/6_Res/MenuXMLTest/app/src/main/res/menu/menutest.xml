@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/example_item"
+		  android:title="Example Item"
+		  android:icon="@drawable/example_item_icon"
+		  android:showAsAction="ifRoom"
+		  />
+	<group android:id="@+id/example_group">
+	      <item android:id="@+id/example_item2"
+	      		android:title="Example Item2"
+	      		android:icon="@drawable/example_item2_icon"
+			  	android:showAsAction="ifRoom"
+			  />
+		  <item android:id="@+id/example_item3"
+	      		android:title="Example Item3"/>
+	</group>
+	<item android:id="@+id/example_submenu"
+		  android:title="Example Sub Menu">
+		  <menu>
+		  		<item android:id="@+id/example_submenu_item"
+		  		      android:title="Example Sub Menu Item"/>
+		  </menu>
+	</item>		  		
+</menu>

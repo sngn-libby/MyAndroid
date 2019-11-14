@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TestMemoMenuBar</string>
+    <string name="app_title">SCSA MEMO</string>
+    <string name="add_memo">ADD_MEMO</string>
+    <string name="add_menu">ADD_MEMO</string>
+    <string name="options_menu">OPTIONS</string>
+    <string name="version_menu">info</string>
+    <string name="delete_menu">DELETE</string>
+</resources>

@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(manager.deleteMemo(sel))
-                    memoListView.setAdapter(memoAdapter);
+                    memoAdapter.notifyDataSetChanged();
                     Toast.makeText(MainActivity.this, "memo deleted", Toast.LENGTH_SHORT).show();
             }
         });
@@ -88,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         memoListView.setAdapter(memoAdapter);
+        // memoAdapter.notifyDataSetChanged(); // 변경된 작업 Refresh!!
     }
 
     class MemoAdapter<M> extends BaseAdapter {

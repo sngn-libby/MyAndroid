@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, LocalServiceController!</string>
+    <string name="app_name">LocalServiceApp</string>
+    <string name="start_service">Start Service</string>
+    <string name="stop_service">Stop Service</string>
+   <string name="notifying_service_controller">상태줄에 표시되는 서비스의 상태, 5초후에 서비스 모드가 바뀝니다.</string>
+    <string name="status_bar_notifications_happy_message">I am happy</string>
+    <string name="status_bar_notifications_ok_message">I am ok</string>
+    <string name="status_bar_notifications_sad_message">I am sad</string>
+    <string name="status_bar_info">서비스 정보</string>
+</resources>

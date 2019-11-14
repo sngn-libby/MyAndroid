@@ -20,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
     Button button;
     private static int mainVal = 0;
     private static int timerVal = 0;
+    private static final boolean MSGTEST = false;
+    private static final boolean RUNTEST = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +47,28 @@ public class MainActivity extends AppCompatActivity {
         public void run() { // Thread
             for(;;) {
                 // backTv.setText("Back : " + (++timerVal));
-                String sendData = "Back : " + (++timerVal);
-                Message msg = myHandler.obtainMessage(1, sendData);
-                myHandler.sendMessage(msg); // Looper가 Q에 데이터를 넣어준다.
+                final String sendData = "Back : " + (++timerVal);
+                if(MSGTEST) {
+                    /* 1. Send Message type */
+                    Message msg = myHandler.obtainMessage(1, sendData);
+                    myHandler.sendMessage(msg); // Looper가 Q에 데이터를 넣어준다.
+                } else if(RUNTEST) { /* 2. Send Runnable type --> MainThread가 실행시킨다 */
+                    myHandler.post(new Runnable() {
+                        final String data = sendData;
+                        @Override
+                        public void run() {
+                            backTv.setText(data);
+                        }
+                    });
+                } else { /* 3. runOnUiThread - 1과 2중 선택해서 돌려버림 */
+                    runOnUiThread(new Runnable() {
+                        final String data = sendData;
+                        @Override
+                        public void run() {
+                            backTv.setText(data);
+                        }
+                    });
+                }
                 super.run();
                 try {
                     sleep(1000);
@@ -57,12 +79,14 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    Handler myHandler = new Handler(){ // handler
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            String sendData = msg.obj.toString();
-            backTv.setText(sendData);
-        }
+    Handler myHandler = new Handler() {
+//            MSGTEST == true 일 때 주석 해제하기
+//        @Override
+//        public void handleMessage(Message msg) {
+//            super.handleMessage(msg);
+//            String sendData = msg.obj.toString();
+//            backTv.setText(sendData);
+//        }
     };
+
 }

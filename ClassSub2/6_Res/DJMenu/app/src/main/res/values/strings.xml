@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, TestMunuActivity!</string>
+    <string name="app_name">TestMunu</string>
+    <string name="menu_name">INSERT</string>
+     <string name="menu_name1">DELETE</string>
+</resources>

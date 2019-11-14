@@ -91,11 +91,6 @@ if(convertView == null) {
 } else {
     viewHolder = (ViewHolder) convertView.getTag();
 }
-
-    TextView titleV = convertView.findViewById(R.id.mTitleV);
-    TextView contentV = convertView.findViewById(R.id.mConV);
-    ImageView imgV = convertView.findViewById(R.id.mImgV);
-
     viewHolder.mTv.setText(selMovie.getmTitle());
     viewHolder.mConTv.setText(selMovie.getmContent());
     viewHolder.mImgV.setImageResource(selMovie.getmImg());
