@@ -142,9 +142,11 @@
 
   - Menu와 Layout 은 XML을 객체화 시킬 수 있다.
 
-  - **Layout Inflater**  
+  - Inflater 종류 : Menu Inflater, Layout Inflater
+  
+- **Layout Inflater**  
     : XML로 작성한 layout을 객체화하기 위해 사용한다. (정적 구성시 : `setContentView(R.layout.activity_main);`)
-
+  
     ```java
     // Inflater 사용법
     // 1
@@ -152,16 +154,16 @@
     // 2
     View.inflate(MainActivity.this, layout, null);
     // 3
-    View nView = View.inflate(MainActivity.this, layout, null);
+  View nView = View.inflate(MainActivity.this, layout, null);
     ```
 
     
-
+  
     - Layout Inflater 객체 얻어오기 (System에 정의된 객체 가져오는 함수 `getSystemService()`)  
       `Context.getSystemService(Context.LayoutInflater)`
-    - method  
+  - method  
       `Inflate(int layoutId, View root)`
-
+  
   ```java
   // 객체화시킬 준비
   LayoutInflater layoutInflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
@@ -173,9 +175,9 @@
   
   // View 추가
   myLinear.removeAllViews();
-  myLinear.addView(aView);
+myLinear.addView(aView);
   ```
-
+  
   
 
 <br>

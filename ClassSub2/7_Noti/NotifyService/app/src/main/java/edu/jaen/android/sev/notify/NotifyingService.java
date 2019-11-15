@@ -7,9 +7,10 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.ConditionVariable;
 import android.os.IBinder;
-
+import android.widget.Toast;
 
 
 public class NotifyingService extends Service {
@@ -23,6 +24,32 @@ public class NotifyingService extends Service {
         Thread notifyingThread = new Thread(null, mTask, "NotifyingService");
         mCondition = new ConditionVariable(false);
         notifyingThread.start();
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Toast.makeText(this, "Notification Occurs", Toast.LENGTH_SHORT).show();
+        showNoti();
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    private void showNoti() {
+        Notification.Builder  b=new Notification.Builder(this);
+        b.setSmallIcon(android.R.drawable.ic_lock_idle_alarm);
+        b.setTicker(null);
+        b.setContentTitle("Important Weather Newsbreak");
+        b.setContentText("now Storm is comming in 20m/s towards Seoul, if you need any detail please call...");
+
+        // 확장 상태바를 눌렀을 때 --> PendingIntent
+        Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.weather.go.kr/weather/main.jsp"));
+        PendingIntent pIntent = PendingIntent.getActivity(this, 0, i, 0);
+
+        b.setContentIntent(pIntent);
+
+        long[] pat = new long[] {500, 100, 1000, 100, 2000};
+        b.setVibrate(pat);
+
+        nm.notify(MUSIC, b.build());
     }
 
     @Override

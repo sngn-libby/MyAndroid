@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    int curPage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this,"Main onCreate", Toast.LENGTH_SHORT).show();
         Log.i("INFO", "Main OnCreate");
     }
-
+    /*
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -33,21 +35,30 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(this,"Main onStart", Toast.LENGTH_SHORT).show();
         Log.i("INFO", "Main onStart");
     }
+    */
 
     @Override
     protected void onResume() {
         super.onResume();
         Toast.makeText(this,"Main onResume", Toast.LENGTH_SHORT).show();
         Log.i("INFO", "Main onResume");
+        curPage = getSharedPreferences("myData", MODE_PRIVATE).getInt("page", 0);
+        Toast.makeText(this, "current Page : "+curPage, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Toast.makeText(this,"Main onPause", Toast.LENGTH_SHORT).show();
+
+        getSharedPreferences("myData", MODE_PRIVATE)
+                .edit()
+                .putInt("page", curPage+=7)
+                .commit();
+        Toast.makeText(this,"Page Info Saved - "+curPage, Toast.LENGTH_SHORT).show();
         Log.i("INFO", "Main onPause");
     }
 
+    /*
     @Override
     protected void onStop() {
         super.onStop();
@@ -59,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         Toast.makeText(this,"Main onDestroy", Toast.LENGTH_SHORT).show();
     }
+    */
 
     public void a1Call(View view) {
         // 정적구성
