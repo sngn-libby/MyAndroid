@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TestTask2</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_e">E</string>
+    <string name="title_activity_f">F</string>
+    <string name="title_activity_g">G</string>
+
+</resources>
