@@ -42,20 +42,28 @@ public class MyBeamUriActivity extends Activity implements
 		} else {
 			// Register callback to set NDEF message
 			mNfcAdapter.setBeamPushUrisCallback(this, this);
+			mNfcAdapter.setBeamPushUrisCallback(beamCallBack, this);
 			// Register callback to listen for message-sent success
 			mNfcAdapter.setOnNdefPushCompleteCallback(this, this);
 		}
 	}
 
+	CreateBeamUrisCallback beamCallBack = new CreateBeamUrisCallback() {
+		@Override
+		public Uri[] createBeamUris(NfcEvent event) {
+			return new Uri[] {mSelImgUri, };
+		}
+	};
+
 	
 	//onClick 속성을 이용한 callback 함수
 	public void selectImage(View v) {
 		Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-		intent.setType("image/*");
+		intent.setType("image/*"); // intent.setType("audio/*");
 		startActivityForResult(intent, PICK_IMAGE);
 	}
 
-	@Override
+	@Override // 모든 data는 무조건 Content Provider가 내용을 제공한다. ==> mUriName은 content://로 시작
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == PICK_IMAGE && resultCode == RESULT_OK
 				&& data != null) {
@@ -96,7 +104,7 @@ public class MyBeamUriActivity extends Activity implements
 		if (mSelImgUri == null) {
 			return null;
 		}
-		return new Uri[] { mSelImgUri };
+		return new Uri[] { mSelImgUri }; // Uri 배열에 전송하고싶은 내용만 넣어주면 -> 블루투스켜고, 내용전송하고, 블루투스 끄는 모든 기능을 알아서 수행한다.
 	}
 
 	@Override
