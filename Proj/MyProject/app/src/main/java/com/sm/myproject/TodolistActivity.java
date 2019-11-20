@@ -1,5 +1,6 @@
 package com.sm.myproject;
 
+import android.arch.persistence.room.Room;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -53,6 +54,12 @@ public class TodolistActivity extends AppCompatActivity {
         memoAdapter =  new MemoAdapter<>(R.layout.todoli_row_layout,  memoArr);
         addFab = (FloatingActionButton) findViewById(R.id.addFab);
         searchView = findViewById(R.id.searchView);
+
+        // 0. Database
+        TodoDatabase db = Room.databaseBuilder(this, TodoDatabase.class, "todo-db")
+                .allowMainThreadQueries().build();
+
+         db.todoDao().getAll().toString();
 
         // 1. add
         addFab.setOnClickListener(new View.OnClickListener() {

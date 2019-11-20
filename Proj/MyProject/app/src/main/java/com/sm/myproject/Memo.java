@@ -1,7 +1,13 @@
 package com.sm.myproject;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+
+@Entity
 public class Memo {
-    private String title, content, stDate, finDate;
+    @PrimaryKey(autoGenerate = true)
+    private String title;
+    private String content, stDate, finDate;
 
     private boolean done, alarm;
 

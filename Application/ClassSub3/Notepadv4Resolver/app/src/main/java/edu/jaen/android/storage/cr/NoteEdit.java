@@ -7,6 +7,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -49,7 +50,7 @@ public class NoteEdit extends Activity {
         	noteCursor.moveToFirst();
         	mTitleText.setText(noteCursor.getString(1));
            mBodyText.setText(noteCursor.getString(2));
-            		
+
         }
     }
     
