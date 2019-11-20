@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/mainTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="뭐넣지" />
+
+    <Button
+        android:id="@+id/todoliBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="todoliStart"
+        android:text="To do li" />
+
+    <Button
+        android:id="@+id/newspressoBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="newspressoStart"
+        android:text="Newspresso" />
+
+    <Button
+        android:id="@+id/candypangBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="candypangStart"
+        android:text="Candy Pang" />
+
+    <Button
+        android:id="@+id/pickfoodBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="pickfoodStart"
+        android:text="Pick Food" />
+
+    <EditText
+        android:id="@+id/infoTv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:ems="10"
+        android:inputType="textMultiLine" />
+
+</LinearLayout>

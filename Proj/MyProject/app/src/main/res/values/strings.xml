@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">MyProject</string>
+    <string name="add_todo">NEW</string>
+    <string name="delete_todo">DELETE</string>
+    <string name="options_menu">OPTIONS</string>
+</resources>
