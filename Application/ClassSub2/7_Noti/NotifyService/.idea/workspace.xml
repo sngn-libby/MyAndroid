@@ -7,26 +7,73 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09628899-1787-4847-aed9-82ad2cab76b8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../6_Res/MenuXMLTest/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../ClassSub3/Preferences1/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../ClassSub3/Preferences2/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../6_Res/DJMenu/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../6_Res/DJMenu/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../6_Res/GridViewShake/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../6_Res/GridViewShake/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../6_Res/MenuXMLTest/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../../6_Res/MenuXMLTest/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../6_Res/MenuXMLTest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../6_Res/MenuXMLTest/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/edu/jaen/android/sev/notify/NotifyingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/edu/jaen/android/sev/notify/NotifyingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../FirstApp/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../FirstApp/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../FirstApp/app/src/main/java/com/sm/firstapp/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../FirstApp/app/src/main/java/com/sm/firstapp/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../TIL/191113_ListView.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../TIL/191113_ListView.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../TIL/191114.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../../TIL/191114.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../TestMemoMenuBar/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../TestMemoMenuBar/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../TestMemoMenuBar/app/src/main/java/com/sm/testmemomenubar/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../TestMemoMenuBar/app/src/main/java/com/sm/testmemomenubar/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../TestThread/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../TestThread/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/androidTest/java/com/sm/molegame/ExampleInstrumentedTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/java/com/sm/molegame/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/java/com/sm/molegame/ResultActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/drawable/ic_pause_black_24dp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/drawable/ic_play_arrow_black_24dp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/drawable/ic_play_arrow_black_32dp.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/drawable/outline.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/layout/activity_result.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/app/src/test/java/com/sm/molegame/ExampleUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MoleGame/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/TodoAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/TodoViewModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/TodolistAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/MyProject/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/MyProject/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/EditTodoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/EditTodoActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/Memo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/Memo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/NewsAdapter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/NewspressoActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/NewspressoActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/TodoDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/TodoDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/TodoDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/TodoDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/TodolistActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/TodolistActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/TodolistManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/java/com/sm/myproject/TodoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/res/layout/activity_edit_todo.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/res/layout/activity_edit_todo.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/res/layout/activity_newspresso.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/res/layout/activity_newspresso.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/res/layout/activity_todolist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/res/layout/activity_todolist.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/res/layout/news_row_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/res/layout/news_row_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/res/layout/todoli_row_layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/MyProject/app/src/main/res/layout/todoli_row_layout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/andProjectGuideline/sample/MouseCatch/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/andProjectGuideline/sample/MouseCatch/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/andProjectGuideline/sample/MouseCatch/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/andProjectGuideline/sample/MouseCatch/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/andProjectGuideline/sample/TextToSpeech/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/andProjectGuideline/sample/TextToSpeech/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../Proj/andProjectGuideline/sample/TextToSpeech/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../Proj/andProjectGuideline/sample/TextToSpeech/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -133,6 +180,25 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="1215564391">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -143,7 +209,6 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-          <provider editor-type-id="android-manifest" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="322">
               <caret line="14" selection-start-line="14" selection-end-line="14" />
@@ -163,12 +228,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/jaen/android/sev/notify/NotifyingController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
-              <folding>
-                <element signature="e#994#1179#0" expanded="true" />
-                <element signature="e#1178#1179#0" expanded="true" />
-              </folding>
+            <state>
+              <caret column="36" lean-forward="true" selection-start-column="36" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -176,12 +237,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/jaen/android/sev/notify/NotifyingService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="39" column="57" lean-forward="true" selection-start-line="39" selection-start-column="57" selection-end-line="39" selection-end-column="57" />
+            <state relative-caret-position="437">
+              <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/edu/jaen/android/sev/notify/BuildConfig.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
               <folding>
-                <element signature="e#1556#2324#0" expanded="true" />
-                <element signature="e#2323#2324#0" expanded="true" />
-                <element signature="e#3056#3089#0" expanded="true" />
+                <element signature="e#0#54#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -189,8 +256,13 @@
       </file>
     </leaf>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>dialog</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -202,10 +274,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1696" />
-    <option name="height" value="1026" />
+    <option name="x" value="41" />
+    <option name="y" value="268" />
+    <option name="width" value="1400" />
+    <option name="height" value="970" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -214,25 +286,23 @@
     </navigator>
     <panes>
       <pane id="ProjectPane" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
               <item name="NotifyService" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="app" type="e9137016:NonAndroidModuleNode" />
             </path>
             <path>
               <item name="NotifyService" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="app" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
             </path>
             <path>
               <item name="NotifyService" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="notify" type="cbb59c9e:AndroidPsiDirectoryNode" />
+              <item name="app" type="e9137016:NonAndroidModuleNode" />
+              <item name="java" type="f7eae187:NonAndroidSourceTypeNode" />
+              <item name="notify" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NotifyService" type="1abcf292:AndroidViewProjectNode" />
@@ -242,12 +312,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="device.picker.selection" value="Nexus_5X_API_26" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../ClassSub3/MyFileOutProject" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../ClassSub1/MyDialog" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.do.not.ask.upgrade.gradle.plugin" value="3.3.1" />
   </component>
@@ -342,23 +414,23 @@
     <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.12520458" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.12520458" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
       <window_info id="Image Layers" order="5" />
       <window_info id="Designer" order="6" />
       <window_info id="Capture Tool" order="7" />
-      <window_info anchor="bottom" id="Run" />
-      <window_info anchor="bottom" id="Debug" />
       <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Logcat" order="1" />
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Find" order="3" weight="0.32839838" />
       <window_info anchor="bottom" id="Terminal" order="4" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Build" order="6" visible="true" weight="0.22397095" />
-      <window_info anchor="bottom" id="Android Profiler" order="7" />
+      <window_info anchor="bottom" id="Build" order="6" visible="true" weight="0.22397095" />
+      <window_info anchor="bottom" id="Android Profiler" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="8" />
+      <window_info anchor="bottom" id="Debug" order="9" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" />
@@ -381,17 +453,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/jaen/android/sev/notify/NotifyingController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
-          <folding>
-            <element signature="e#994#1179#0" expanded="true" />
-            <element signature="e#1178#1179#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -399,15 +460,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/edu/jaen/android/sev/notify/BuildConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/jaen/android/sev/notify/NotifyingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="36" lean-forward="true" selection-start-column="36" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/edu/jaen/android/sev/notify/NotifyingService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="39" column="57" lean-forward="true" selection-start-line="39" selection-start-column="57" selection-end-line="39" selection-end-column="57" />
-          <folding>
-            <element signature="e#1556#2324#0" expanded="true" />
-            <element signature="e#2323#2324#0" expanded="true" />
-            <element signature="e#3056#3089#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="437">
+          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
         </state>
       </provider>
     </entry>

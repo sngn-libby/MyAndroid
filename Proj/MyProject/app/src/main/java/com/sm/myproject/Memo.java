@@ -1,13 +1,18 @@
 package com.sm.myproject;
 
+import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 @Entity
 public class Memo {
     @PrimaryKey(autoGenerate = true)
+    private int id;
+
     private String title;
-    private String content, stDate, finDate;
+    private String content, finDate;
+
+    private String stDate;
 
     private boolean done, alarm;
 
@@ -44,6 +49,10 @@ public class Memo {
         return done;
     }
 
+    public int getId() {
+        return id;
+    }
+
     public void setTitle(String title) {
         this.title = title;
     }
@@ -68,10 +77,15 @@ public class Memo {
         this.alarm = alarm;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Memo{" +
-                "title='" + title + '\'' +
+                "id=" + id +
+                ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", stDate='" + stDate + '\'' +
                 ", finDate='" + finDate + '\'' +

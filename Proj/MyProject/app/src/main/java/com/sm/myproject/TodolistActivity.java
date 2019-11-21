@@ -1,7 +1,12 @@
 package com.sm.myproject;
 
+import android.arch.lifecycle.AndroidViewModel;
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
 import android.arch.persistence.room.Room;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -18,7 +23,7 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class TodolistActivity extends AppCompatActivity {
 
@@ -36,30 +41,49 @@ public class TodolistActivity extends AppCompatActivity {
 
     ListView memoListView;
     TodoManager manager;
-    ArrayList<Memo> memoArr, memoOrgArr;
-    String filterStr, filteringStr;
+    List<Memo> memoArr, mMemoArr, mKeepArr, delMemoArr;
     String sel;
-    MemoAdapter<Memo> memoAdapter;
+    TodoAdapter memoAdapter;
     FloatingActionButton addFab;
     SearchView searchView;
+    TodoDatabase db;
+    TodoDao tDao;
+    private TodoViewModel mTodoViewModel;
+
+    boolean delete_mode = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todolist);
 
-        manager = TodoManager.getInstance();
+        // 0. Database
+        db = Room.databaseBuilder(this, TodoDatabase.class, "todo-db").build();
+        tDao = db.todoDao();
+        memoAdapter = new TodoAdapter(R.layout.todoli_row_layout, memoArr);
+        // manager = TodoManager.getInstance();
         memoListView = findViewById(R.id.memoListView);
-        memoOrgArr = memoArr = manager.getAllMemo();
-        memoAdapter =  new MemoAdapter<>(R.layout.todoli_row_layout,  memoArr);
         addFab = (FloatingActionButton) findViewById(R.id.addFab);
         searchView = findViewById(R.id.searchView);
+        mTodoViewModel = ViewModelProviders.of(this).get(TodoViewModel.class);
 
-        // 0. Database
-        TodoDatabase db = Room.databaseBuilder(this, TodoDatabase.class, "todo-db")
-                .allowMainThreadQueries().build();
+        tDao.getAll().observe(this, new Observer<List<Memo>>() {
+            @Override
+            public void onChanged(@Nullable List<Memo> memos) {
 
-         db.todoDao().getAll().toString();
+                memoArr = memos;
+            }
+        });
+
+        mTodoViewModel.getAll().observe(this, new Observer<List<Memo>>() {
+            @Override
+            public void onChanged(@Nullable List<Memo> memos) {
+
+                memoAdapter.setDataList(memos);
+                memoListView.setAdapter(memoAdapter);
+
+            }
+        });
 
         // 1. add
         addFab.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +96,12 @@ public class TodolistActivity extends AppCompatActivity {
         });
         // 2. multi delete --- OptionsMenu
         // 3. search --- Text, Voice
+        searchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mKeepArr == null) mKeepArr = memoArr;
+            }
+        });
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -85,14 +115,26 @@ public class TodolistActivity extends AppCompatActivity {
                 return true;
             }
         });
-        // 4. filter --- OptionsMenu
-
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                memoArr = mKeepArr;
+                mKeepArr = null;
+                return true;
+            }
+        });
 
         memoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Memo m = manager.getAllMemo().get(position);
-                sel = m.getTitle();
+                if(delMemoArr!=null) delMemoArr = null;
+
+                if(delete_mode) {
+                    delMemoArr.add((Memo) memoAdapter.getItem(position));
+                } else {
+                    Memo m = (Memo) memoAdapter.getItem(position);
+                    sel = m.getTitle();
+                }
             }
         });
 
@@ -100,11 +142,12 @@ public class TodolistActivity extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(TodolistActivity.this, EditTodoActivity.class);
-                Memo m = manager.getAllMemo().get(position);
-                i.putExtra("status", VIEW_MODE);
+                Memo m = (Memo) memoAdapter.getItem(position);
+                i.putExtra("mode", VIEW_MODE);
                 i.putExtra("title", m.getTitle());
                 i.putExtra("contents", m.getContent());
                 i.putExtra("date", m.getStDate());
+                i.putExtra("stat", m.isDone());
                 startActivityForResult(i, VIEW_MODE);
                 return false;
             }
@@ -114,7 +157,7 @@ public class TodolistActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        memoListView.setAdapter(memoAdapter);
+         memoListView.setAdapter(memoAdapter);
         // memoAdapter.notifyDataSetChanged(); // 변경된 작업 Refresh!!
     }
 
@@ -133,10 +176,15 @@ public class TodolistActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        if(mKeepArr == null) mKeepArr = memoArr;
+
         switch (item.getItemId()) {
+
             case FILTER_ALL_ID:
                 searchIncludeStr(null);
+                memoArr = mKeepArr;
+                mKeepArr = null;
                 break;
             case FILTER_DOING_ID:
                 filterStatus(DOING_STAT);
@@ -144,59 +192,32 @@ public class TodolistActivity extends AppCompatActivity {
             case FILTER_DONE_ID:
                 filterStatus(DONE_STAT);
                 break;
+            case DELETE_MENU_ID:
+                memoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        if(delete_mode == false) {
+                            delete_mode = true;
+                            item.setIcon(android.R.drawable.ic_menu_set_as);
+                        }
+                        else if(delete_mode) {
+                            delete_mode = false;
+                            item.setIcon(android.R.drawable.ic_menu_delete);
+
+                            if(delMemoArr!=null) {
+                                for (int i = 0; i < delMemoArr.size(); i++) {
+                                    // tDao.delete(delMemoArr.get(i));
+                                    mTodoViewModel.delete(delMemoArr.get(i));
+                                }
+                                delMemoArr = null;
+                            }
+                        }
+                    }
+                });
+                break;
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    class MemoAdapter<M> extends BaseAdapter {
-
-        private int rowLayout;
-        private ArrayList<Memo> memoList;
-
-        public MemoAdapter(int rowLayout, ArrayList<Memo> memoList) {
-            this.rowLayout = rowLayout;
-            this.memoList = memoList;
-        }
-
-        @Override
-        public int getCount() {
-            return memoList.size();
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return memoList.get(position);
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            Memo selMemo = memoList.get(position);
-            final ViewHolder viewHolder;
-
-            if(convertView == null) {
-                convertView = View.inflate(TodolistActivity.this, rowLayout, null);
-
-                viewHolder = new TodolistActivity.ViewHolder();
-                viewHolder.title = convertView.findViewById(R.id.row_todo);
-                viewHolder.finDate = convertView.findViewById(R.id.row_date);
-                convertView.setTag(viewHolder);
-            }
-            else {
-                viewHolder = (TodolistActivity.ViewHolder) convertView.getTag();
-            }
-            viewHolder.title.setText(selMemo.getTitle());
-            viewHolder.finDate.setText(selMemo.getStDate());
-
-
-            return convertView;
-        }
     }
 
     @Override
@@ -206,31 +227,40 @@ public class TodolistActivity extends AppCompatActivity {
         if(resultCode == RESULT_CANCELED) return;
 
         if(requestCode == ADD_MODE) {
-            Toast.makeText(this, "memo added", Toast.LENGTH_SHORT).show();
-            manager.addMemo(data.getStringExtra("title"),
+            Toast.makeText(this, "todo added", Toast.LENGTH_SHORT).show();
+
+            Memo m = new Memo(data.getStringExtra("title"),
                     data.getStringExtra("contents"),
                     data.getStringExtra("stDate"),
                     data.getStringExtra("finDate"));
+            m.setDone(data.getBooleanExtra("stat", false));
+
+            mTodoViewModel.insert(m);
+            // tDao.insert(m);
 
 
         } else if(requestCode == VIEW_MODE) {
-            Toast.makeText(this, "memo edited", Toast.LENGTH_SHORT).show();
-            manager.editMemo(data.getStringExtra("title"),
+            Toast.makeText(this, "todo edited", Toast.LENGTH_SHORT).show();
+
+            Memo m = new Memo(data.getStringExtra("title"),
                     data.getStringExtra("contents"),
-                    data.getStringExtra("date"),
-                    data.getBooleanExtra("stat", false));
+                    data.getStringExtra("stDate"),
+                    data.getStringExtra("finDate"));
+            m.setDone(data.getBooleanExtra("stat", false));
+            // tDao.update(m);
+            mTodoViewModel.update(m);
         }
     }
 
     public void searchIncludeStr(String str) {
-        memoArr.clear();
+        memoArr = null;
 
         if(str == null) { // 문자 입력이 없는 상태
-            memoArr = memoOrgArr;
+            memoArr = mKeepArr;
         } else {
-            for(int i=0; i<memoOrgArr.size(); i++) {
-                if(memoOrgArr.get(i).getTitle().toLowerCase().contains(str))
-                    memoArr.add(memoOrgArr.get(i));
+            for(int i=0; i<mKeepArr.size(); i++) {
+                if(!mKeepArr.get(i).getTitle().toLowerCase().contains(str))
+                    memoArr.add(mKeepArr.get(i));
             }
         }
 
@@ -238,24 +268,20 @@ public class TodolistActivity extends AppCompatActivity {
     }
 
     public void filterStatus(boolean stat) {
-        memoArr.clear();
+        memoArr = null;
 
         if(stat == DOING_STAT) {
-            for(int i=0; i<memoOrgArr.size(); i++) {
-                if(!memoOrgArr.get(i).isDone()) {
-                    memoArr.add(memoOrgArr.get(i));
+            for(int i=0; i<mKeepArr.size(); i++) {
+                if(!mKeepArr.get(i).isDone()) {
+                    memoArr.add(mKeepArr.get(i));
                 }
             }
         } else {
-            for(int i=0; i<memoOrgArr.size(); i++) {
-                if(memoOrgArr.get(i).isDone()) {
-                    memoArr.add(memoOrgArr.get(i));
+            for(int i=0; i<mKeepArr.size(); i++) {
+                if(mKeepArr.get(i).isDone()) {
+                    memoArr.add(mKeepArr.get(i));
                 }
             }
         }
-    }
-
-    class ViewHolder {
-        TextView title, finDate;
     }
 }

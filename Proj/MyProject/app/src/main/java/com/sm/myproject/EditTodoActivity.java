@@ -33,8 +33,8 @@ public class EditTodoActivity extends AppCompatActivity {
     TodoManager manager;
     AlarmManager am;
 
-    CheckBox statusBox, alarmBox;
-    EditText titleTx, contentsTx, alarmTx;
+    CheckBox statusBox;
+    EditText titleTx, contentsTx;
     Button editBtn, cancelBtn, dateBtn, timeBtn;
     ImageView voiceBtn1, voiceBtn2;
     String date;
@@ -49,7 +49,7 @@ public class EditTodoActivity extends AppCompatActivity {
     int min = 0;
 
     int flag;
-    boolean alarm = false;
+    // boolean alarm = false;
     public static final String EDIT_MODE = "Edit";
     public static final String SAVE_MODE = "Save";
 
@@ -80,11 +80,11 @@ public class EditTodoActivity extends AppCompatActivity {
         contentsTx = findViewById(R.id.contentsTx);
         dateBtn = findViewById(R.id.dateBtn);
         timeBtn = findViewById(R.id.timeBtn);
-        alarmTx = findViewById(R.id.alarmTx);
+        // alarmTx = findViewById(R.id.alarmTx);
         editBtn = findViewById(R.id.editBtn);
         cancelBtn = findViewById(R.id.cancelBtn);
         statusBox = findViewById(R.id.statusBox);
-        alarmBox = findViewById(R.id.alarmBox);
+        // alarmBox = findViewById(R.id.alarmBox);
         voiceBtn1 = findViewById(R.id.voiceBtn1);
         voiceBtn2 = findViewById(R.id.voiceBtn2);
 
@@ -92,13 +92,14 @@ public class EditTodoActivity extends AppCompatActivity {
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         date = dateFormat.format(cal.getTime());
 
-        flag = i.getIntExtra("status", 0);
+        flag = i.getIntExtra("mode", 0);
         if(flag == VIEW_MODE) {
 
             editBtn.setText(EDIT_MODE);
             titleTx.setText(i.getStringExtra("title"));
             contentsTx.setText(i.getStringExtra("contents"));
             dateBtn.setText(i.getStringExtra("date"));
+            statusBox.setChecked(i.getBooleanExtra("stat", false));
 
         } else {
             editBtn.setText(SAVE_MODE);
@@ -189,24 +190,6 @@ public class EditTodoActivity extends AppCompatActivity {
                         Calendar.getInstance().get(Calendar.MINUTE),
                         true
                 ).show();
-            }
-        });
-
-        alarmBox.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(alarm) {
-                    int after = Integer.parseInt(alarmTx.getText().toString());
-
-                    long now = SystemClock.elapsedRealtime();
-                    long atTime = now + (after * 1000 * 60);
-
-                    Intent i = new Intent();
-                    i.setClass(EditTodoActivity.this, AlarmReceiver.class);
-                    PendingIntent pi = PendingIntent.getBroadcast(EditTodoActivity.this, 101, i, 0);
-                    am.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, atTime, pi);
-                    Toast.makeText(EditTodoActivity.this, after + "분 후 알람등륵", Toast.LENGTH_SHORT).show();
-                }
             }
         });
     }

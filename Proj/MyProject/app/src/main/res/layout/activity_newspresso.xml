@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
+    android:layout_margin="8dp"
     android:orientation="vertical"
     tools:context=".NewspressoActivity">
 
-    <android.support.v7.widget.RecyclerView
+    <ListView
         android:id="@+id/newsBoard"
         android:layout_width="match_parent"
-        android:layout_height="715dp"
-        android:layout_marginTop="8dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </LinearLayout>
