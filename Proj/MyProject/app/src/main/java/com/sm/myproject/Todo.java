@@ -5,7 +5,7 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
 @Entity
-public class Memo {
+public class Todo {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
@@ -16,7 +16,7 @@ public class Memo {
 
     private boolean done, alarm;
 
-    public Memo(String title, String content, String stDate, String finDate) {
+    public Todo(String title, String content, String stDate, String finDate) {
         this.title = title;
         this.content = content;
         this.stDate = stDate;
@@ -83,7 +83,7 @@ public class Memo {
 
     @Override
     public String toString() {
-        return "Memo{" +
+        return "Todo{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +

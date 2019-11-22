@@ -13,8 +13,8 @@ public class TodoViewModel extends AndroidViewModel {
 
     private TodoRepository mRepository;
 
-    private LiveData<List<Memo>> mAllTodo;
-    private List<Memo> mAllToday;
+    private LiveData<List<Todo>> mAllTodo;
+    private List<Todo> mAllToday;
 
     String today;
 
@@ -28,12 +28,12 @@ public class TodoViewModel extends AndroidViewModel {
         mAllToday = mRepository.getToday(today).getValue();
     }
 
-    public LiveData<List<Memo>> getAll() {
+    public LiveData<List<Todo>> getAll() {
         return mAllTodo;
     }
 
-    public List<Memo> getToday() {
-        List<Memo> mArr = mAllTodo.getValue();
+    public List<Todo> getToday() {
+        List<Todo> mArr = getAll().getValue();
         mAllToday = null;
 
         for(int i=0; i<mArr.size(); i++) {
@@ -44,15 +44,30 @@ public class TodoViewModel extends AndroidViewModel {
         return mAllToday;
     }
 
-    public void insert(Memo memo) {
-        mRepository.insert(memo);
+    public Todo getItem(int id) {
+        final List<Todo> mArr = getAll().getValue();
+        for(int i=0; i<mArr.size(); i++) {
+            if(mArr.get(i).getId() == id) {
+                return mArr.get(i);
+            }
+        }
+        return null;
     }
 
-    public void update(Memo memo) {
-        mRepository.update(memo);
+    public void insert(Todo todo) {
+        mRepository.insert(todo);
     }
 
-    public void delete(Memo memo) {
-        mRepository.delete(memo);
+    public void update(Todo todo) { mRepository.update(todo); }
+
+    public void delete(Todo todo) {
+        mRepository.delete(todo);
+    }
+
+    public void deleteAll() {
+        List<Todo> mArr = getAll().getValue();
+        for(int i=0; i<mArr.size(); i++) {
+            delete(mArr.get(i));
+        }
     }
 }

@@ -33,14 +33,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="candypangStart"
-        android:text="Candy Pang" />
+        android:text="Whack A Mole" />
 
     <Button
         android:id="@+id/pickfoodBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="pickfoodStart"
-        android:text="Pick Food" />
+        android:text="Initialize Database" />
 
     <EditText
         android:id="@+id/infoTv"

@@ -26,7 +26,7 @@ public class ResultActivity extends AppCompatActivity {
 //        sub_retry.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                Intent intent = new Intent(ResultActivity.this, MainActivity.class);
+//                Intent intent = new Intent(ResultActivity.this, WhackamoleActivity.class);
 //                startActivity(intent);
 //                finish();
 //

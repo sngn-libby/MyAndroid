@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:layout_margin="20dp"
+
+android:orientation="vertical"
+tools:context=".WhackamoleActivity">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginTop="85dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_editor_absoluteX="70dp"
+        app:layout_editor_absoluteY="80dp">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_gravity="end"
+            android:background="@drawable/outline"
+            tools:layout_editor_absoluteX="40dp"
+            tools:layout_editor_absoluteY="8dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/moledown"
+                    tools:layout_editor_absoluteX="30dp"
+                    tools:layout_editor_absoluteY="27dp" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/moledown"
+                    tools:layout_editor_absoluteX="341dp"
+                    tools:layout_editor_absoluteY="124dp" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/moledown"
+                    tools:layout_editor_absoluteX="247dp"
+                    tools:layout_editor_absoluteY="324dp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/moledown"
+                    tools:layout_editor_absoluteX="247dp"
+                    tools:layout_editor_absoluteY="324dp" />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/moledown"
+                    tools:layout_editor_absoluteX="247dp"
+                    tools:layout_editor_absoluteY="324dp" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/moledown"
+                    tools:layout_editor_absoluteX="247dp"
+                    tools:layout_editor_absoluteY="324dp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <ImageView
+                    android:id="@+id/imageView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/moledown"
+                    tools:layout_editor_absoluteX="247dp"
+                    tools:layout_editor_absoluteY="324dp" />
+
+                <ImageView
+                    android:id="@+id/imageView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/moledown"
+                    tools:layout_editor_absoluteX="247dp"
+                    tools:layout_editor_absoluteY="324dp" />
+
+                <ImageView
+                    android:id="@+id/imageView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/moledown"
+                    tools:layout_editor_absoluteX="247dp"
+                    tools:layout_editor_absoluteY="324dp" />
+
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/readySignTv"
+            android:layout_width="300dp"
+            android:layout_height="150dp"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="READY"
+            android:textSize="40sp"
+            android:textStyle="italic" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="165dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="72dp"
+        android:background="@drawable/outline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/playerName"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="11dp"
+            android:text="Player"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/playerNameTv"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/timeLeftTv"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="right"
+            android:text="Unknown"
+            android:textColor="@android:color/holo_purple"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/playerName" />
+
+
+        <TextView
+            android:id="@+id/myScore"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginBottom="17dp"
+            android:layout_toEndOf="@+id/ScoreTv"
+            android:layout_toRightOf="@+id/ScoreTv"
+            android:gravity="bottom"
+            android:text="0  "
+            android:textColor="@android:color/holo_purple"
+            android:textSize="20sp"
+            android:textStyle="italic|bold"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="110dp" />
+
+        <TextView
+            android:id="@+id/scoreSplitter"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="-6dp"
+            android:layout_marginRight="-6dp"
+            android:layout_marginBottom="16dp"
+            android:layout_toStartOf="@+id/targetScore"
+            android:layout_toLeftOf="@+id/targetScore"
+            android:gravity="bottom"
+            android:text="/"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="130dp" />
+
+        <TextView
+            android:id="@+id/targetScore"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="bottom"
+            android:text=""
+            android:textSize="18sp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="204dp" />
+
+        <TextView
+            android:id="@+id/ScoreTv"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="16dp"
+            android:clickable="false"
+            android:gravity="bottom"
+            android:text="Score"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.937"
+            tools:layout_editor_absoluteX="70dp" />
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/gameStartBtn"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="15dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_play_arrow_black_32dp" />
+
+    <RelativeLayout
+        android:id="@+id/timeSetLayout"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/outline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/timeLeft"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginBottom="0dp"
+            android:gravity="center_horizontal|top"
+            android:text="Time Left"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/timeLeftTv"
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="5dp"
+            android:gravity="bottom|center_horizontal"
+            android:text="60"
+            android:textColor="@android:color/holo_purple"
+            android:textSize="32sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="parent" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="60dp"
+        android:layout_height="70dp"
+        android:layout_margin="4dp"
+        android:alpha="@android:integer/config_longAnimTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/whackamole" />
+
+
+</android.support.constraint.ConstraintLayout>

@@ -5,7 +5,7 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
-@Database(entities = {Memo.class}, version=1, exportSchema = false)
+@Database(entities = {Todo.class}, version=3, exportSchema = false)
 public abstract class TodoDatabase extends RoomDatabase {
     public abstract TodoDao todoDao();
     private static TodoDatabase INSTANCE = null;

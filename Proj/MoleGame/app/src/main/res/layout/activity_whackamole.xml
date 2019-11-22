@@ -7,7 +7,7 @@ android:layout_height="match_parent"
 android:layout_margin="20dp"
 
 android:orientation="vertical"
-tools:context=".MainActivity">
+tools:context=".WhackamoleActivity">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -208,8 +208,8 @@ tools:context=".MainActivity">
             android:layout_height="30dp"
             android:layout_alignParentBottom="true"
             android:layout_marginTop="0dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginRight="0dp"
+            android:layout_marginEnd="-6dp"
+            android:layout_marginRight="-6dp"
             android:layout_marginBottom="16dp"
             android:layout_toStartOf="@+id/targetScore"
             android:layout_toLeftOf="@+id/targetScore"

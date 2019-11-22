@@ -8,6 +8,7 @@ import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -18,7 +19,7 @@ import android.widget.Toast;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class WhackamoleActivity extends AppCompatActivity {
 
     TextView timeLeftTv, playerNameTv;
     TextView myScore, targetScore;
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_whackamole);
 
         timeLeftTv = (TextView)findViewById(R.id.timeLeftTv);
         playerNameTv = (TextView)findViewById(R.id.playerNameTv);
@@ -111,6 +112,16 @@ public class MainActivity extends AppCompatActivity {
                     if(((ImageView)v).getTag().toString().equals(TAG_ON)){
                         Toast.makeText(getApplicationContext(), "good", Toast.LENGTH_LONG).show();
                         myScore.setText(String.valueOf(++score));
+
+                        if((int)score >= (int)TARGET_SCORE) {
+                            try {
+                                Thread.sleep(1000);
+                                dlg_handler.sendEmptyMessage(GAME_WIN_MSG);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
                         ((ImageView) v).setImageResource(R.drawable.moledown);
                         v.setTag(TAG_OFF);
                     }else{
@@ -196,11 +207,6 @@ public class MainActivity extends AppCompatActivity {
                 msg.arg1 = i;
                 handler.sendMessage(msg);
 
-                if(Integer.parseInt((String) myScore.getText())
-                        >= Integer.parseInt((String) targetScore.getText())) {
-                    dlg_handler.sendEmptyMessage(GAME_WIN_MSG);
-                }
-
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -221,8 +227,8 @@ public class MainActivity extends AppCompatActivity {
 
             // setGameStartDialog
             if(msg.what == GAME_START_MSG) {
-                final EditText input_txt = new EditText(MainActivity.this);
-                new AlertDialog.Builder(MainActivity.this)
+                final EditText input_txt = new EditText(WhackamoleActivity.this);
+                new AlertDialog.Builder(WhackamoleActivity.this)
                         .setIcon(R.drawable.whackamolelogo)
                         .setTitle("WHACK A MOLE!")
                         .setMessage("Uesrname")
@@ -230,9 +236,10 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                if(input_txt.getText().equals("")) input_txt.setText("Unknown");
+                                if(input_txt.getText().toString().equals("")) input_txt.setText("Unknown");
+                                Log.e("NAME", input_txt.getText().toString());
                                 playerNameTv.setText(input_txt.getText());
-                                Toast.makeText(MainActivity.this, input_txt.getText() + " entered", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(WhackamoleActivity.this, input_txt.getText() + " entered", Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
                             }
                         })
@@ -246,7 +253,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             else if (msg.what == GAME_LOSE_MSG) {
-                new AlertDialog.Builder(MainActivity.this)
+                new AlertDialog.Builder(WhackamoleActivity.this)
                         .setTitle("You Lose")
                         .setMessage("Your Record\n\t" + myScore.getText())
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -260,7 +267,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             else if (msg.what == GAME_WIN_MSG) {
-                new AlertDialog.Builder(MainActivity.this)
+                new AlertDialog.Builder(WhackamoleActivity.this)
                         .setTitle("You Win")
                         .setMessage("Your Record\n\t" + myScore.getText())
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -270,7 +277,7 @@ public class MainActivity extends AppCompatActivity {
                                 finish();
                             }
                         })
-                        .create();
+                        .show();
             }
         }
     };

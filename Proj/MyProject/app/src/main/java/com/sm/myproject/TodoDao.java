@@ -11,35 +11,38 @@ import java.util.List;
 
 @Dao
 public interface TodoDao {
-    @Query("SELECT * FROM Memo WHERE (Memo.id == :id)")
-    Memo getMemo(int id);
+    @Query("SELECT * FROM Todo WHERE (Todo.id=(:id))")
+    Todo getMemo(int id);
 
-    @Query("SELECT * FROM Memo")
-    LiveData<List<Memo>> getAll();
+    @Query("SELECT * FROM Todo")
+    LiveData<List<Todo>> getAll();
 
-    @Query("SELECT * FROM Memo WHERE (Memo.finDate=:date)")
-    LiveData<List<Memo>> getToday(String date);
+    @Query("SELECT * FROM Todo WHERE (Todo.finDate=(:date))")
+    LiveData<List<Todo>> getToday(String date);
 
     // query for filter
-    @Query("SELECT * FROM Memo WHERE (Memo.done=0)")
-    List<Memo> getDoing();
+    @Query("SELECT * FROM Todo WHERE (Todo.done=0)")
+    List<Todo> getDoing();
 
-    @Query("SELECT * FROM Memo WHERE (Memo.done=1)")
-    List<Memo> getDone();
+    @Query("SELECT * FROM Todo WHERE (Todo.done=1)")
+    List<Todo> getDone();
 
-    @Query("SELECT * FROM Memo ORDER BY stDate ASC")
-    List<Memo> sortStDate();
+    @Query("SELECT * FROM Todo ORDER BY stDate ASC")
+    List<Todo> sortStDate();
 
-    @Query("SELECT * FROM Memo ORDER BY finDate ASC")
-    List<Memo> sortfinDate();
+    @Query("SELECT * FROM Todo ORDER BY finDate ASC")
+    List<Todo> sortfinDate();
+
+    @Query("DELETE FROM Todo")
+    void deleteAll();
 
     @Insert
-    void insert(Memo memo);
+    void insert(Todo todo);
 
     @Update
-    void update(Memo memo);
+    void update(Todo todo);
 
     @Delete
-    void delete(Memo memo);
+    void delete(Todo todo);
 
 }

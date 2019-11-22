@@ -10,7 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".TodolistActivity"></activity>
+        <activity android:name=".TodolistActivity"
+            android:exported="true">
+
+        </activity>
         <activity
             android:name=".EditTodoActivity"
             android:exported="true" />
@@ -18,13 +21,20 @@
             android:name=".AlarmActivity"
             android:exported="true" />
         <activity
-            android:name=".PickfoodActivity"
-            android:exported="true" />
+            android:name=".InitializeActivity"
+            android:exported="true" >
+
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
+
+        </activity>
+
         <activity
-            android:name=".ZombierunActivity"
-            android:exported="true" />
-        <activity
-            android:name=".CandypangActivity"
+            android:name=".WhackamoleActivity"
             android:exported="true" />
         <activity
             android:name=".NewspressoActivity"

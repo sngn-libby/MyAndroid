@@ -30,9 +30,6 @@ import static com.sm.myproject.TodolistActivity.VIEW_MODE;
 
 public class EditTodoActivity extends AppCompatActivity {
 
-    TodoManager manager;
-    AlarmManager am;
-
     CheckBox statusBox;
     EditText titleTx, contentsTx;
     Button editBtn, cancelBtn, dateBtn, timeBtn;
@@ -49,7 +46,6 @@ public class EditTodoActivity extends AppCompatActivity {
     int min = 0;
 
     int flag;
-    // boolean alarm = false;
     public static final String EDIT_MODE = "Edit";
     public static final String SAVE_MODE = "Save";
 
@@ -70,16 +66,13 @@ public class EditTodoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_todo);
 
-        manager = TodoManager.getInstance();
-        am = (AlarmManager)getSystemService(ALARM_SERVICE);
-
         Intent i = getIntent();
 
         cal = Calendar.getInstance();
         titleTx = findViewById(R.id.titleTx);
         contentsTx = findViewById(R.id.contentsTx);
         dateBtn = findViewById(R.id.dateBtn);
-        timeBtn = findViewById(R.id.timeBtn);
+        // timeBtn = findViewById(R.id.timeBtn);
         // alarmTx = findViewById(R.id.alarmTx);
         editBtn = findViewById(R.id.editBtn);
         cancelBtn = findViewById(R.id.cancelBtn);
@@ -98,7 +91,7 @@ public class EditTodoActivity extends AppCompatActivity {
             editBtn.setText(EDIT_MODE);
             titleTx.setText(i.getStringExtra("title"));
             contentsTx.setText(i.getStringExtra("contents"));
-            dateBtn.setText(i.getStringExtra("date"));
+            dateBtn.setText(i.getStringExtra("finDate"));
             statusBox.setChecked(i.getBooleanExtra("stat", false));
 
         } else {
@@ -115,6 +108,7 @@ public class EditTodoActivity extends AppCompatActivity {
                 i.putExtra("contents", contentsTx.getText().toString());
                 i.putExtra("stDate", date);
                 i.putExtra("finDate", dateBtn.getText().toString());
+                i.putExtra("id", i.getIntExtra("id", 0));
 
                 setResult(RESULT_OK, i);
                 finish();
@@ -173,6 +167,7 @@ public class EditTodoActivity extends AppCompatActivity {
             }
         });
 
+        /*
         timeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -192,6 +187,7 @@ public class EditTodoActivity extends AppCompatActivity {
                 ).show();
             }
         });
+        */
     }
 
     @Override

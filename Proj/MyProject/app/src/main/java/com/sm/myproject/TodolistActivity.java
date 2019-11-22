@@ -1,23 +1,24 @@
 package com.sm.myproject;
 
-import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.arch.persistence.room.Room;
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.nfc.NfcAdapter;
+import android.os.Build;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.SubMenu;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -38,52 +39,49 @@ public class TodolistActivity extends AppCompatActivity {
     private static final int FILTER_DONE_ID = Menu.FIRST + 2;
     private static final int FILTER_DOING_ID = Menu.FIRST + 3;
 
+    private static final String NFC_TAG = "database";
 
+
+    public static int mId = -1;
     ListView memoListView;
-    TodoManager manager;
-    List<Memo> memoArr, mMemoArr, mKeepArr, delMemoArr;
-    String sel;
+    CheckBox statBox;
+    TextView titleTv;
+    List<Todo> todoArr, mTodoArr, mKeepArr, delTodoArr;
     TodoAdapter memoAdapter;
     FloatingActionButton addFab;
     SearchView searchView;
-    TodoDatabase db;
-    TodoDao tDao;
+
     private TodoViewModel mTodoViewModel;
 
-    boolean delete_mode = false;
+    public static boolean DELETE_MODE = false;
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todolist);
 
-        // 0. Database
-        db = Room.databaseBuilder(this, TodoDatabase.class, "todo-db").build();
-        tDao = db.todoDao();
-        memoAdapter = new TodoAdapter(R.layout.todoli_row_layout, memoArr);
+        memoAdapter = new TodoAdapter(R.layout.todoli_row_layout, todoArr);
         // manager = TodoManager.getInstance();
         memoListView = findViewById(R.id.memoListView);
         addFab = (FloatingActionButton) findViewById(R.id.addFab);
         searchView = findViewById(R.id.searchView);
         mTodoViewModel = ViewModelProviders.of(this).get(TodoViewModel.class);
+        titleTv = findViewById(R.id.row_title);
+        statBox = findViewById(R.id.row_stat);
 
-        tDao.getAll().observe(this, new Observer<List<Memo>>() {
+
+        mTodoViewModel.getAll().observe(this, new Observer<List<Todo>>() {
             @Override
-            public void onChanged(@Nullable List<Memo> memos) {
+            public void onChanged(@Nullable List<Todo> todos) {
 
-                memoArr = memos;
-            }
-        });
-
-        mTodoViewModel.getAll().observe(this, new Observer<List<Memo>>() {
-            @Override
-            public void onChanged(@Nullable List<Memo> memos) {
-
-                memoAdapter.setDataList(memos);
+                memoAdapter.setDataList(todos);
                 memoListView.setAdapter(memoAdapter);
 
             }
         });
+
+
 
         // 1. add
         addFab.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +97,7 @@ public class TodolistActivity extends AppCompatActivity {
         searchView.setOnSearchClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mKeepArr == null) mKeepArr = memoArr;
+                if(mKeepArr == null) mKeepArr = todoArr;
             }
         });
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -118,40 +116,93 @@ public class TodolistActivity extends AppCompatActivity {
         searchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
-                memoArr = mKeepArr;
+                todoArr = mKeepArr;
                 mKeepArr = null;
                 return true;
             }
         });
 
-        memoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*
+        memoListView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(delMemoArr!=null) delMemoArr = null;
+            public boolean onLongClick(View v) {
+                Log.e("INFO", "selected\nmode: "+DELETE_MODE);
 
-                if(delete_mode) {
-                    delMemoArr.add((Memo) memoAdapter.getItem(position));
-                } else {
-                    Memo m = (Memo) memoAdapter.getItem(position);
-                    sel = m.getTitle();
+                if(DELETE_MODE) { // delete
+
+                    Todo m = mTodoViewModel.getItem(mId);
+                    if(mId == -1 ) {}
+                    else if(m != null) {
+                        mTodoViewModel.delete(mTodoViewModel.getItem(mId));
+                    }
+
+                } else { // edit
+                    if(mId == -1) {}
+                    else {
+                        Intent i = new Intent(TodolistActivity.this, EditTodoActivity.class);
+                        Todo m = (Todo) memoAdapter.getItem(mId);
+                        i.putExtra("mode", VIEW_MODE);
+                        i.putExtra("title", m.getTitle());
+                        i.putExtra("contents", m.getContent());
+                        i.putExtra("date", m.getStDate());
+                        i.putExtra("stat", m.isDone());
+                        i.putExtra("id", mId);
+                        startActivityForResult(i, VIEW_MODE);
+                        mId = -1;
+                    }
                 }
+
+                return true;
             }
         });
 
-        memoListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        */
+        memoListView.setOnTouchListener(new View.OnTouchListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent i = new Intent(TodolistActivity.this, EditTodoActivity.class);
-                Memo m = (Memo) memoAdapter.getItem(position);
-                i.putExtra("mode", VIEW_MODE);
-                i.putExtra("title", m.getTitle());
-                i.putExtra("contents", m.getContent());
-                i.putExtra("date", m.getStDate());
-                i.putExtra("stat", m.isDone());
-                startActivityForResult(i, VIEW_MODE);
-                return false;
+            public boolean onTouch(View v, MotionEvent event) {
+                Log.e("INFO", "selected\nmode: "+DELETE_MODE);
+
+                if(DELETE_MODE) { // delete
+
+                    if(mId == 0) mId = 1;
+                    Todo m = mTodoViewModel.getItem(mId-1);
+                    if(mId == -1 ) {}
+                    else if(m != null) {
+                        mTodoViewModel.delete(mTodoViewModel.getItem(mId));
+                    }
+
+                } else { // edit
+                    if(mId == -1) {}
+                    else {
+                        Intent i = new Intent(TodolistActivity.this, EditTodoActivity.class);
+                        Todo m = (Todo) memoAdapter.getItem(mId-1);
+                        i.putExtra("mode", VIEW_MODE);
+                        i.putExtra("title", m.getTitle());
+                        i.putExtra("contents", m.getContent());
+                        i.putExtra("finDate", m.getFinDate());
+                        i.putExtra("stat", m.isDone());
+                        i.putExtra("id", mId);
+                        startActivityForResult(i, VIEW_MODE);
+
+                    }
+                }
+
+                mId = -1;
+                return true;
             }
         });
+
+
+        /*
+        Intent i = getIntent();
+        if(i!=null && i.getStringExtra("initialize").equals(NFC_TAG))
+        {
+            Toast.makeText(this, "Start Clear", Toast.LENGTH_SHORT).show();
+            mTodoViewModel.deleteAll();
+            setResult(20);
+            finish();
+        }
+        */
     }
 
     @Override
@@ -164,7 +215,7 @@ public class TodolistActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         menu.add(0, DELETE_MENU_ID, Menu.NONE, R.string.delete_todo)
-                .setIcon(android.R.drawable.ic_menu_delete)
+                .setIcon(R.drawable.ic_delete_black_24dp)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
 
         SubMenu subMenu = menu.addSubMenu("Filter");
@@ -177,13 +228,13 @@ public class TodolistActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(final MenuItem item) {
-        if(mKeepArr == null) mKeepArr = memoArr;
-
+        if(mKeepArr == null) mKeepArr = todoArr;
+        Log.e("INFO", "option selected "+item.getItemId());
         switch (item.getItemId()) {
 
             case FILTER_ALL_ID:
                 searchIncludeStr(null);
-                memoArr = mKeepArr;
+                todoArr = mKeepArr;
                 mKeepArr = null;
                 break;
             case FILTER_DOING_ID:
@@ -193,27 +244,24 @@ public class TodolistActivity extends AppCompatActivity {
                 filterStatus(DONE_STAT);
                 break;
             case DELETE_MENU_ID:
-                memoListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        if(delete_mode == false) {
-                            delete_mode = true;
-                            item.setIcon(android.R.drawable.ic_menu_set_as);
-                        }
-                        else if(delete_mode) {
-                            delete_mode = false;
-                            item.setIcon(android.R.drawable.ic_menu_delete);
+                if(DELETE_MODE == false) {
+                    DELETE_MODE = true;
+                    Log.e("INFO", "iconRefredshed");
+                    item.setIcon(R.drawable.ic_check_black_24dp);
+                }
+                else if(DELETE_MODE) {
+                    DELETE_MODE = false;
+                    mId = -1;
 
-                            if(delMemoArr!=null) {
-                                for (int i = 0; i < delMemoArr.size(); i++) {
-                                    // tDao.delete(delMemoArr.get(i));
-                                    mTodoViewModel.delete(delMemoArr.get(i));
-                                }
-                                delMemoArr = null;
-                            }
+                    item.setIcon(R.drawable.ic_delete_black_24dp);
+
+                    if(delTodoArr !=null) {
+                        for (int i = 0; i < delTodoArr.size(); i++) {
+                            mTodoViewModel.delete(delTodoArr.get(i));
                         }
+                        delTodoArr = null;
                     }
-                });
+                }
                 break;
         }
 
@@ -226,41 +274,32 @@ public class TodolistActivity extends AppCompatActivity {
 
         if(resultCode == RESULT_CANCELED) return;
 
+        Todo m = new Todo(data.getStringExtra("title"),
+                data.getStringExtra("contents"),
+                data.getStringExtra("stDate"),
+                data.getStringExtra("finDate"));
+        m.setDone(data.getBooleanExtra("stat", false));
+
         if(requestCode == ADD_MODE) {
             Toast.makeText(this, "todo added", Toast.LENGTH_SHORT).show();
-
-            Memo m = new Memo(data.getStringExtra("title"),
-                    data.getStringExtra("contents"),
-                    data.getStringExtra("stDate"),
-                    data.getStringExtra("finDate"));
-            m.setDone(data.getBooleanExtra("stat", false));
-
             mTodoViewModel.insert(m);
-            // tDao.insert(m);
-
 
         } else if(requestCode == VIEW_MODE) {
+            m.setId(data.getIntExtra("id", 0));
             Toast.makeText(this, "todo edited", Toast.LENGTH_SHORT).show();
-
-            Memo m = new Memo(data.getStringExtra("title"),
-                    data.getStringExtra("contents"),
-                    data.getStringExtra("stDate"),
-                    data.getStringExtra("finDate"));
-            m.setDone(data.getBooleanExtra("stat", false));
-            // tDao.update(m);
             mTodoViewModel.update(m);
         }
     }
 
     public void searchIncludeStr(String str) {
-        memoArr = null;
+        todoArr = null;
 
         if(str == null) { // 문자 입력이 없는 상태
-            memoArr = mKeepArr;
+            todoArr = mKeepArr;
         } else {
             for(int i=0; i<mKeepArr.size(); i++) {
                 if(!mKeepArr.get(i).getTitle().toLowerCase().contains(str))
-                    memoArr.add(mKeepArr.get(i));
+                    todoArr.add(mKeepArr.get(i));
             }
         }
 
@@ -268,18 +307,18 @@ public class TodolistActivity extends AppCompatActivity {
     }
 
     public void filterStatus(boolean stat) {
-        memoArr = null;
+        todoArr = null;
 
         if(stat == DOING_STAT) {
             for(int i=0; i<mKeepArr.size(); i++) {
                 if(!mKeepArr.get(i).isDone()) {
-                    memoArr.add(mKeepArr.get(i));
+                    todoArr.add(mKeepArr.get(i));
                 }
             }
         } else {
             for(int i=0; i<mKeepArr.size(); i++) {
                 if(mKeepArr.get(i).isDone()) {
-                    memoArr.add(mKeepArr.get(i));
+                    todoArr.add(mKeepArr.get(i));
                 }
             }
         }

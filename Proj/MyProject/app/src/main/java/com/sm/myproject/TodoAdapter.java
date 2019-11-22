@@ -1,36 +1,42 @@
 package com.sm.myproject;
 
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+
 
 import java.util.List;
 
 public class TodoAdapter extends BaseAdapter {
 
     private int rowLayout;
-    private List<Memo> memoList; // Chached copy
+    private List<Todo> todoList; // Chached copy
 
-    public TodoAdapter(int rowLayout, List<Memo> memoList) {
+    public TodoAdapter(int rowLayout, List<Todo> todoList) {
         this.rowLayout = rowLayout;
-        this.memoList = memoList;
+        this.todoList = todoList;
     }
 
-    public void setDataList(List<Memo> memoList) {
-        this.memoList = memoList;
+    public void setDataList(List<Todo> todoList) {
+        this.todoList = todoList;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return memoList == null ? 0 : memoList.size();
+        return todoList == null ? 0 : todoList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return memoList.get(position);
+        return todoList.get(position);
     }
 
     @Override
@@ -39,9 +45,9 @@ public class TodoAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
-        Memo sel = memoList.get(position);
+        Todo sel = todoList.get(position);
         final ViewHolder viewHolder;
 
         if(convertView == null) {
@@ -50,22 +56,49 @@ public class TodoAdapter extends BaseAdapter {
             viewHolder = new ViewHolder();
 
             viewHolder.title = convertView.findViewById(R.id.row_title);
-            viewHolder.finDate = convertView.findViewById(R.id.row_date);
+            viewHolder.date = convertView.findViewById(R.id.row_date);
             viewHolder.stat = convertView.findViewById(R.id.row_stat);
+            viewHolder.delete = convertView.findViewById(R.id.row_delete);
+
+
+            viewHolder.title.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Log.e("INFO", "title selected "+ position + " mId: "+TodolistActivity.mId);
+                    if(TodolistActivity.mId == -1 && TodolistActivity.DELETE_MODE == false)
+                        TodolistActivity.mId = (int)((Todo) getItem(position)).getId();
+                }
+            });
+
+            viewHolder.delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.e("INFO", "delete selected "+ position);
+                    if(TodolistActivity.DELETE_MODE == false) {
+
+                    } else {
+                        if(TodolistActivity.mId == -1)
+                            TodolistActivity.mId = (int) ((Todo) getItem(position)).getId();
+                    }
+                }
+            });
+
             convertView.setTag(viewHolder);
         }
         else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.title.setText(sel.getTitle());
-        viewHolder.finDate.setText(sel.getStDate());
+        viewHolder.date.setText(sel.getFinDate());
         viewHolder.stat.setChecked(sel.isDone());
 
         return convertView;
     }
 
     class ViewHolder {
-        TextView title, finDate;
+        TextView title, date;
         CheckBox stat;
+        ImageView delete;
     }
 }

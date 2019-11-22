@@ -2,7 +2,6 @@ package com.sm.myproject;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
-import android.arch.persistence.room.Dao;
 import android.os.AsyncTask;
 
 import java.text.SimpleDateFormat;
@@ -12,8 +11,8 @@ import java.util.List;
 public class TodoRepository {
 
     private TodoDao mTodoDao;
-    private LiveData<List<Memo>> mAllTodo;
-    private LiveData<List<Memo>> mAllToday;
+    private LiveData<List<Todo>> mAllTodo;
+    private LiveData<List<Todo>> mAllToday;
     private static TodoDao mAsyncTaskDao;
 
     public TodoRepository(Application application) {
@@ -24,62 +23,77 @@ public class TodoRepository {
         mAllToday = mTodoDao.getToday(
                 new SimpleDateFormat("yyyy-MM-dd").format(
                 Calendar.getInstance().getTime()));
-
     }
 
-    public LiveData<List<Memo>> getAll() {
+    public LiveData<List<Todo>> getAll() {
         return mAllTodo;
     }
 
-    public LiveData<List<Memo>> getToday(String format) {
+    public LiveData<List<Todo>> getToday(String format) {
         return mAllToday;
     }
 
-    public void insert(Memo memo) {
-        new insertAsyncTask(mTodoDao).execute(memo);
+    public void insert(Todo todo) {
+        new insertAsyncTask(mTodoDao).execute(todo);
     }
 
-    public void update(Memo memo) { new updateAsyncTask(mTodoDao).execute(memo); }
+    public void update(Todo todo) { new updateAsyncTask(mTodoDao).execute(todo); }
 
-    public void delete(Memo memo) { new deleteAsyncTask(mTodoDao).execute(memo); }
+    public void delete(Todo todo) { new deleteAsyncTask(mTodoDao).execute(todo); }
 
-    private static class insertAsyncTask extends AsyncTask<Memo, Void, Void> {
+    public void deleteAll() { new deleteAllAsyncTask(mTodoDao).execute(); }
+
+    private static class insertAsyncTask extends AsyncTask<Todo, Void, Void> {
 
         insertAsyncTask(TodoDao dao) {
             mAsyncTaskDao = dao;
         }
 
         @Override
-        protected Void doInBackground(Memo... memos) {
-            mAsyncTaskDao.insert(memos[0]);
+        protected Void doInBackground(Todo... todos) {
+            mAsyncTaskDao.insert(todos[0]);
 
             return null;
         }
     }
 
-    private static class updateAsyncTask extends AsyncTask<Memo, Void, Void> {
+    private static class updateAsyncTask extends AsyncTask<Todo, Void, Void> {
 
         updateAsyncTask(TodoDao dao) {
             mAsyncTaskDao = dao;
         }
 
         @Override
-        protected Void doInBackground(Memo... memos) {
-            mAsyncTaskDao.update(memos[0]);
+        protected Void doInBackground(Todo... todos) {
+            mAsyncTaskDao.update(todos[0]);
 
             return null;
         }
     }
 
-    private static class deleteAsyncTask extends AsyncTask<Memo, Void, Void> {
+    private static class deleteAsyncTask extends AsyncTask<Todo, Void, Void> {
 
         deleteAsyncTask(TodoDao dao) {
             mAsyncTaskDao = dao;
         }
 
         @Override
-        protected Void doInBackground(Memo... memos) {
-            mAsyncTaskDao.delete(memos[0]);
+        protected Void doInBackground(Todo... todos) {
+            mAsyncTaskDao.delete(todos[0]);
+
+            return null;
+        }
+    }
+
+    private static class deleteAllAsyncTask extends AsyncTask<Todo, Void, Void> {
+
+        deleteAllAsyncTask(TodoDao dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Todo... todos) {
+            //for(int i=0; i<)
 
             return null;
         }

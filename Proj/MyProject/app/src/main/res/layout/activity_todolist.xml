@@ -32,9 +32,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:src="@drawable/add"
-            android:visibility="visible"
-            app:backgroundTint="@android:color/transparent" />
+            android:src="@drawable/ic_add_black_36dp"
+            app:backgroundTint="@color/colorAccent" />
     </RelativeLayout>
 
 </LinearLayout>
