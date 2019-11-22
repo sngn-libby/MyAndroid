@@ -14,6 +14,7 @@ public class TodoViewModel extends AndroidViewModel {
     private TodoRepository mRepository;
 
     private LiveData<List<Todo>> mAllTodo;
+    private LiveData<List<Todo>> mDoneTodo;
     private List<Todo> mAllToday;
 
     String today;

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    >
+
+    <TextView
+        android:layout_marginTop="100dip"
+        android:id="@+id/username_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:gravity="left"
+        android:text="일정"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/shareTitleEt"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:autoText="false"
+        android:capitalize="none"
+        android:gravity="fill_horizontal"
+        android:scrollHorizontally="true"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/password_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:gravity="left"
+        android:text="날짜"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/shareDateEt"
+            android:layout_width="235dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dip"
+            android:gravity="fill_horizontal"
+            android:scrollHorizontally="true"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Button
+            android:id="@+id/dateSelect"
+            android:layout_width="60dp"
+            android:layout_gravity="right"
+            android:layout_height="fill_parent"
+            android:onClick="selectDateS" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dip"
+        android:layout_marginTop = "20dip"
+        android:layout_marginRight="20dip"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/shareB"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dip"
+            android:text="SHARE" />
+
+        <Button
+            android:id="@+id/cancelB"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:onClick="cancelShare"
+            android:layout_margin="20dip"
+            android:text="CANCEL" />
+
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

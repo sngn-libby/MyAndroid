@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="newspaper_filters">
+        <item>시사인</item>
+        <item>조선일보</item>
+        <item>미디어오늘</item>
+        <item>그 외 신문사</item>
+    </string-array>
+</resources>

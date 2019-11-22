@@ -33,7 +33,7 @@ import java.util.List;
 public class NewspressoActivity extends AppCompatActivity {
 
 
-    private ListView newsBoard;
+    ListView newsBoard;
     private NewsAdapter mAdapter;
     RequestQueue queue;
     List<NewsData> newsList;
@@ -71,7 +71,7 @@ public class NewspressoActivity extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         try {
-                            newsList = new ArrayList<>();
+                            newsList = new ArrayList<NewsData>();
 
                             JSONObject jObj = new JSONObject(response);
                             JSONArray arrArticle = jObj.getJSONArray("articles");
@@ -85,9 +85,11 @@ public class NewspressoActivity extends AppCompatActivity {
                                 newsData.setUrlToImage(obj.getString("urlToImage"));
                                 newsList.add(newsData);
 
-                                mAdapter = new NewsAdapter(newsList);
-                                newsBoard.setAdapter(mAdapter);
                             }
+
+                            mAdapter = new NewsAdapter(R.layout.news_row_layout, newsList);
+                            newsBoard.setAdapter(mAdapter);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -104,9 +106,11 @@ public class NewspressoActivity extends AppCompatActivity {
 
     class NewsAdapter<N> extends BaseAdapter {
 
+        private int rowLayout;
         private List<NewsData> newsList;
 
-        public NewsAdapter(List<NewsData> newsList) {
+        public NewsAdapter(int rowLayout, List<NewsData> newsList) {
+            this.rowLayout = rowLayout;
             this.newsList = newsList;
             Fresco.initialize(NewspressoActivity.this);
         }
@@ -129,7 +133,7 @@ public class NewspressoActivity extends AppCompatActivity {
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             if (convertView == null) {
-                convertView = View.inflate(NewspressoActivity.this, R.layout.news_row_layout, null);
+                convertView = View.inflate(NewspressoActivity.this, rowLayout, null);
             }
 
             NewsData news = (NewsData) getItem(position);

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Notepad v3</string>
+    <string name="no_notes">No Notes Yet</string>
+    <string name="menu_insert">Add Item</string>
+    <string name="menu_delete">Del Item</string>
+    <string name="title">Title</string>
+    <string name="body">Body</string>
+    <string name="confirm">Confirm</string>
+    <string name="edit_note">Edit Note</string>
+    <string name="light_grey">#9C9C9C</string>
+    <string name="dark_blue">#153961</string>
+    <string name="today">오늘의 할일</string>
+    <string name="personal">개인 일정 추가</string>
+    <string name="group">일정 공유</string>
+
+</resources>
