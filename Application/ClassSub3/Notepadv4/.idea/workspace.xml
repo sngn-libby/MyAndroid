@@ -6,26 +6,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5cfa0866-d959-4362-bf71-e89defce5aaa" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Notepadv4Resolver/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Proj/MyProject/app/src/main/java/com/sm/myproject/TodoDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Proj/MyProject/app/src/main/java/com/sm/myproject/TodoDatabase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../../Proj/MyProject/app/src/main/java/com/sm/myproject/TodolistManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Notepadv4Resolver/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../Notepadv4Resolver/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Notepadv4Resolver/.idea/caches/gradle_models.ser" beforeDir="false" afterPath="$PROJECT_DIR$/../Notepadv4Resolver/.idea/caches/gradle_models.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Notepadv4Resolver/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Notepadv4Resolver/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Notepadv4Resolver/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Notepadv4Resolver/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Notepadv4Resolver/app/src/main/java/edu/jaen/android/storage/cr/NoteEdit.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Notepadv4Resolver/app/src/main/java/edu/jaen/android/storage/cr/NoteEdit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Network/class_ble&amp;beacon/3_ble&amp;beacon/00_DeviceScanActivity/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Network/class_ble&amp;beacon/3_ble&amp;beacon/00_DeviceScanActivity/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Proj/MyProject/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Proj/MyProject/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Proj/MyProject/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Proj/MyProject/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Proj/MyProject/app/src/main/java/com/sm/myproject/Memo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Proj/MyProject/app/src/main/java/com/sm/myproject/Memo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Proj/MyProject/app/src/main/java/com/sm/myproject/TodolistActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Proj/MyProject/app/src/main/java/com/sm/myproject/TodolistActivity.java" afterDir="false" />
-    </list>
+    <list default="true" id="5cfa0866-d959-4362-bf71-e89defce5aaa" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +242,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Resources Explorer" />
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
