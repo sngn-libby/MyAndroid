@@ -6,7 +6,9 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5cfa0866-d959-4362-bf71-e89defce5aaa" name="Default Changelist" comment="" />
+    <list default="true" id="5cfa0866-d959-4362-bf71-e89defce5aaa" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../Proj/MyProject/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Proj/MyProject/.idea/codeStyles/Project.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
